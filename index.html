@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Rye&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 <div class="topbar"><span>14 DE NOVEMBRO DE 2026</span><span>POVOADO DE AROEIRA · PÉ DE SERRA — BA</span><span>ENTRE CHAPÉUS, CAVALOS E EMOÇÃO</span></div>
@@ -16,8 +16,8 @@
   <a class="brand" href="#inicio" aria-label="Festa de Vaqueiros e Fazendeiros">
     <img class="brand-logo" src="assets/logo-oficial.png" alt="XXIII Festa de Vaqueiros e Fazendeiros do Povoado de Aroeira"><span class="brand-copy"><b>FESTA DE<br>VAQUEIROS <i>&</i> FAZENDEIROS</b><small>DO POVOADO DE AROEIRA</small></span>
   </a>
-  <button class="hamb" aria-label="Abrir menu">☰</button>
-  <nav class="nav">
+  <button class="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+  <nav class="nav" id="site-nav">
     <a href="#inicio">Início</a><a href="#noticias">Notícias</a><a href="#festa">A festa</a><a href="#candidatas">Candidatas</a><a href="#votacao">Votação</a><a href="#programacao">Programação</a><a href="#comissao">Comissão</a><a href="#patrocinadores">Patrocinadores</a><a href="#midia">Vídeos</a><a href="#galeria">Fotos</a><a href="#contato">Contato</a>
   </nav>
   <div class="social"><span>◎</span><span>f</span><span>▶</span><span class="pin">⌖</span><small>Povoado de Aroeira<br>Pé de Serra · BA</small><b>⌕</b></div>
@@ -58,8 +58,8 @@
 <section class="news section light" id="noticias">
  <div class="two-col">
   <div><div class="section-title light-title"><h2>ÚLTIMAS <em>NOTÍCIAS</em></h2><a href="#noticias">VER TODAS →</a></div><div class="news-grid">
-   <article class="news-card"><img src="assets/news1.jpg" alt="Preparativos"><small>10 DE SETEMBRO DE 2026</small><h3>Preparativos para a XXIII edição entram na reta final</h3><p>A comissão organizadora segue trabalhando para oferecer uma festa inesquecível...</p><a href="#noticias">LER MAIS →</a></article>
-   <article class="news-card"><img src="assets/news2.jpg" alt="Representantes"><small>08 DE SETEMBRO DE 2026</small><h3>Conheça as representantes da XXIII edição</h3><p>Beleza, simpatia e amor pela tradição. Nossas candidatas estão prontas para viver...</p><a href="#candidatas">LER MAIS →</a></article>
+   <article class="news-card"><img src="assets/news1.jpg" alt="Imagem ilustrativa da festa" loading="lazy"><small>ATUALIZAÇÃO EDITÁVEL</small><h3>Informações da XXIII edição</h3><p>Notícia oficial em preparação. O conteúdo será publicado após confirmação da organização.</p><a href="#noticias">EM ATUALIZAÇÃO →</a></article>
+   <article class="news-card"><img src="assets/news2.jpg" alt="Representantes da festa" loading="lazy"><small>REPRESENTANTES</small><h3>Conheça as representantes</h3><p>Veja os nomes e as funções informadas para a XXIII edição da festa.</p><a href="#candidatas">VER CANDIDATAS →</a></article>
    <article class="news-card"><img src="assets/news3.jpg" alt="Atualização da programação"><small>INFORMAÇÃO EM ATUALIZAÇÃO</small><h3>Programação oficial em atualização</h3><p>Os horários e atrações serão publicados após confirmação da organização.</p><a href="#programacao">VER PROGRAMAÇÃO →</a></article>
   </div></div>
   <div id="midia"><div class="section-title light-title"><h2>VÍDEOS <em>EM DESTAQUE</em></h2><a href="#midia">VER TODOS →</a></div><div class="video-card"><img src="assets/video.jpg" alt="A força da nossa tradição"><button aria-label="Reproduzir">▶</button><span>03:45</span><b>A FORÇA DA NOSSA TRADIÇÃO</b></div><div class="video-tabs"><span>Entrevistas</span><span>Bastidores</span><span>Candidatas</span><span>Momentos</span></div></div>
@@ -67,9 +67,9 @@
 </section>
 
 <section class="sponsor section light" id="patrocinadores">
- <div class="section-title light-title"><h2>NOSSOS <em>PATROCINADORES</em></h2><a href="#contato">VER TODOS →</a></div>
- <div class="sponsor-row"><button>‹</button><img src="assets/sponsors.jpg" alt="Marcas patrocinadoras da festa"><button>›</button></div>
- <aside class="sponsor-cta"><div class="handshake">♢</div><div><h3>QUER PATROCINAR?</h3><p>Seja parte da XXIII edição<br>e ajude a manter viva essa tradição.</p><a class="btn copper" href="#contato">SAIBA MAIS →</a></div></aside>
+ <div class="section-title light-title"><h2>APOIO E <em>PARCERIAS</em></h2><a href="#contato">SAIBA MAIS →</a></div>
+ <div class="sponsor-row"><img src="assets/sponsors.jpg" alt="Espaço reservado para marcas parceiras" loading="lazy"></div>
+ <aside class="sponsor-cta"><div class="handshake">♢</div><div><h3>QUER APOIAR?</h3><p>Seja parte da XXIII edição<br>e ajude a manter viva essa tradição.</p><a class="btn copper" href="#contato">SAIBA MAIS →</a></div></aside>
 </section>
 
 <section class="section dark info" id="festa">
@@ -78,11 +78,11 @@
 </section>
 
 <section class="section dark vote" id="votacao">
- <div class="section-title"><div><span class="eyebrow">PARTICIPE DA XXIII EDIÇÃO</span><h2>VOTO DE <em>APOIO</em></h2></div><button class="small-btn" id="reg">VER REGULAMENTO ↗</button></div>
+ <div class="section-title"><div><span class="eyebrow">DEMONSTRAÇÃO VISUAL DO FLUXO</span><h2>VOTO DE <em>APOIO</em></h2></div><button class="small-btn" id="reg">VER REGULAMENTO ↗</button></div>
  <div class="vote-grid"><div class="vote-box"><div class="pick-row"><button class="selected"><img src="assets/isabella.jpg"><b>Isabella<br><small>Rainha</small></b></button><button><img src="assets/keylla.jpg"><b>Keylla<br><small>Princesa</small></b></button><button><img src="assets/ana.jpg"><b>Ana Mel<br><small>Princesa mirim</small></b></button></div><label>QUANTO VOCÊ DESEJA CONTRIBUIR?</label><div class="amounts"><button>R$ 5</button><button>R$ 10</button><button class="active">R$ 20</button><button>R$ 50</button><button>R$ 100</button><button>Outro valor</button></div><p class="hint">Cada R$ 1,00 corresponde a 1 voto.</p><button class="btn copper wide" id="continueVote">CONTINUAR →</button></div><div class="ranking"><span class="eyebrow">ÚLTIMA ATUALIZAÇÃO · 18:45</span><h3>RANKING DA <em>XXIII EDIÇÃO</em></h3><ol><li><b>🥇 Isabella Gonçalves</b><span>2.450 apoios</span></li><li><b>🥈 Keylla Almeida</b><span>2.180 apoios</span></li><li><b>🥉 Ana Mel</b><span>1.930 apoios</span></li><li><b>4º Maite Azevedo</b><span>1.740 apoios</span></li><li><b>5º Denise Hora</b><span>1.520 apoios</span></li></ol></div></div>
 </section>
 
-<section class="section dark schedule" id="programacao"><div class="section-title"><div><span class="eyebrow">14 DE NOVEMBRO DE 2026</span><h2>PROGRAMAÇÃO <em>OFICIAL</em></h2></div></div><div class="timeline"><div><b>08:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>10:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>14:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>18:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div class="highlight"><b>20:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>22:00</b><span>PLACEHOLDER EDITÁVEL</span></div></div></section>
+<section class="section dark schedule" id="programacao"><div class="section-title"><div><span class="eyebrow">14 DE NOVEMBRO DE 2026</span><h2>PROGRAMAÇÃO <em>EM ATUALIZAÇÃO</em></h2></div></div><div class="timeline"><div><b>08:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>10:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>14:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>18:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div class="highlight"><b>20:00</b><span>PLACEHOLDER EDITÁVEL</span></div><div><b>22:00</b><span>PLACEHOLDER EDITÁVEL</span></div></div></section>
 
 <section class="section dark commission" id="comissao"><div><span class="eyebrow">QUEM FAZ A FESTA ACONTECER</span><h2>COMISSÃO <em>ORGANIZADORA</em></h2><div class="people"><div><small>Presidente</small><b>ZÉLI DE ZUCA</b></div><div><small>Vice-presidente</small><b>GILVAN AZEVEDO</b></div></div></div><div class="leather-note">“Entre chapéus, cavalos e emoção,<br>mantendo viva a tradição.”<small>XXIII Festa de Vaqueiros e Fazendeiros</small></div></section>
 
@@ -93,7 +93,7 @@
 
 <footer class="footer"><div class="footer-rope"></div><div class="footer-main"><img src="assets/logo-oficial.png" alt="Logo oficial da festa" class="footer-logo"><div class="footer-links"><a href="#inicio">INÍCIO</a><a href="#noticias">NOTÍCIAS</a><a href="#festa">A FESTA</a><a href="#candidatas">CANDIDATAS</a><a href="#votacao">VOTAÇÃO</a><a href="#programacao">PROGRAMAÇÃO</a><a href="#comissao">COMISSÃO</a><a href="#patrocinadores">PATROCINADORES</a><a href="#midia">VÍDEOS</a><a href="#galeria">FOTOS</a><a href="#contato">CONTATO</a><div class="legal">Política de Privacidade &nbsp; | &nbsp; Regulamento &nbsp; | &nbsp; Termos de Uso</div></div><div class="footer-slogan"><span>◎ &nbsp; f &nbsp; ▶</span><p>Entre chapéus, cavalos e emoção,<br>vaqueiros e fazendeiros,<br>mantendo viva a tradição.</p></div></div><div class="copyright">© 2026 Festa de Vaqueiros e Fazendeiros do Povoado de Aroeira. Todos os direitos reservados.</div></footer>
 
-<div class="modal" id="modal"><div class="modal-box"><button class="close">×</button><div id="modalContent"></div></div></div>
-<script src="script.js?v=2"></script>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true"><div class="modal-box"><button class="close" aria-label="Fechar janela">×</button><div id="modalContent"><h2 id="modalTitle" class="sr-only">Detalhes</h2></div></div></div>
+<script src="script.js?v=3"></script>
 </body>
 </html>
