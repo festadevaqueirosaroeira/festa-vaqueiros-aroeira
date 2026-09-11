@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Criar minha plataforma — Vagas.io para Empresas</title>
+<meta name="description" content="Cadastre sua empresa e tenha sua própria plataforma de recrutamento e seleção em minutos." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  /* ============== PALETA OFICIAL VAGAS.IO ============== */
+  :root {
+    --vinho: #720F35;
+    --vinho-escuro: #3A0A1D;
+    --vinho-claro: #C14A7A;
+    --vinho-bg: rgba(148,19,74,.08);
+    --vinho-bg-2: rgba(193,74,122,.12);
+    --branco: #FFFFFF;
+    --preto: #211A1D;
+    --cinza-900: #211A1D;
+    --cinza-700: #71666B;
+    --cinza-500: #71666B;
+    --cinza-300: #E7DCE1;
+    --cinza-200: #E7DCE1;
+    --cinza-100: #F6EEF1;
+    --cinza-50:  #FBF8F9;
+    --verde: #8A3D5C;
+    --vermelho: #B3265B;
+    --sombra-sm: 0 1px 2px rgba(54,9,28,.05);
+    --sombra-md: 0 4px 12px rgba(54,9,28,.08);
+    --sombra-lg: 0 12px 40px rgba(54,9,28,.12);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--preto);
+    background: var(--cinza-50);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: var(--vinho); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ============== TOPO ============== */
+  .topo {
+    background: var(--branco);
+    border-bottom: 1px solid var(--cinza-200);
+    padding: 16px 0;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topo-interno {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    display: flex; align-items: center; text-decoration: none;
+  }
+  .logo-img { display: block; width: 150px; height: auto; }
+  .topo-link { color: var(--cinza-700); font-weight: 500; font-size: 14px; }
+
+  .garantias {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin: 0 0 30px;
+  }
+  .garantia {
+    background: var(--branco); border: 1px solid var(--cinza-200);
+    border-radius: var(--radius-md); padding: 16px 12px; text-align: center;
+    box-shadow: var(--sombra-sm);
+  }
+  .garantia-icone { font-size: 21px; margin-bottom: 6px; }
+  .garantia strong { display: block; color: var(--vinho-escuro); font-size: 13px; margin-bottom: 3px; }
+  .garantia span { display: block; color: var(--cinza-500); font-size: 11px; line-height: 1.35; }
+  @media (max-width: 640px) {
+    .garantias { grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 20px 0 0; }
+    .garantia { padding: 9px 5px; border-radius: 8px; }
+    .garantia-icone { font-size: 16px; margin-bottom: 3px; }
+    .garantia strong { font-size: 10px; line-height: 1.2; margin-bottom: 2px; }
+    .garantia span { font-size: 9px; line-height: 1.2; }
+  }
+
+  /* ============== CONTAINER ============== */
+  .container {
+    max-width: 720px; margin: 0 auto; padding: 48px 24px 80px;
+  }
+
+  /* ============== HEADER ============== */
+  .header { text-align: center; margin-bottom: 36px; }
+  .header h1 {
+    font-size: 36px; font-weight: 800;
+    color: var(--vinho-escuro);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .header h1 .grad {
+    background: linear-gradient(135deg, var(--vinho), var(--vinho-claro));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    font-size: 17px; color: var(--cinza-700);
+    max-width: 540px; margin: 0 auto;
+  }
+
+  /* ============== STEPPER ============== */
+  .stepper {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; margin: 32px 0 28px;
+  }
+  .step {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--cinza-500); font-size: 13px; font-weight: 600;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--cinza-200); color: var(--cinza-500);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px;
+    transition: all 0.2s;
+  }
+  .step.ativo .step-num {
+    background: var(--vinho); color: var(--branco);
+    box-shadow: 0 0 0 4px var(--vinho-bg);
+  }
+  .step.feito .step-num {
+    background: var(--verde); color: var(--branco);
+  }
+  .step-divider {
+    flex: 1; max-width: 60px;
+    height: 2px; background: var(--cinza-200);
+    margin: 0 4px;
+  }
+  .step-divider.feito { background: var(--verde); }
+
+  /* ============== CARD ============== */
+  .card {
+    background: var(--branco);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--sombra-md);
+    border: 1px solid var(--cinza-200);
+    padding: 36px 32px;
+  }
+  .card h2 {
+    font-size: 22px; font-weight: 700;
+    color: var(--vinho-escuro);
+    margin-bottom: 4px;
+  }
+  .card .sub {
+    color: var(--cinza-500); font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* ============== FORM ============== */
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .form-grid.full > .field:nth-child(n+1) { grid-column: 1 / -1; }
+  .field { display: flex; flex-direction: column; }
+  .field.full { grid-column: 1 / -1; }
+  .field label {
+    font-size: 13px; font-weight: 600;
+    color: var(--cinza-700); margin-bottom: 6px;
+  }
+  .field label .req { color: var(--vermelho); }
+  .field label .opc {
+    color: var(--cinza-500); font-weight: 400; font-size: 11px;
+    margin-left: 4px;
+  }
+  .field input, .field select {
+    padding: 12px 14px;
+    border: 1.5px solid var(--cinza-200);
+    border-radius: var(--radius-sm);
+    font-size: 15px; font-family: inherit;
+    color: var(--preto);
+    background: var(--branco);
+    transition: all 0.15s;
+    width: 100%;
+  }
+  .field input:focus, .field select:focus {
+    outline: none;
+    border-color: var(--vinho);
+    box-shadow: 0 0 0 3px var(--vinho-bg);
+  }
+  .field input::placeholder { color: var(--cinza-500); }
+  .field-erro {
+    font-size: 12px; color: var(--vermelho);
+    margin-top: 4px; display: none;
+  }
+  .field.invalido input { border-color: var(--vermelho); }
+  .field.invalido .field-erro { display: block; }
+
+  /* ============== PLANOS ============== */
+  .planos-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+    margin-bottom: 20px;
+  }
+  .plano-card {
+    border: 2px solid var(--cinza-200);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    cursor: pointer; transition: all 0.15s;
+    position: relative;
+    background: var(--branco);
+  }
+  .plano-card:hover {
+    border-color: var(--vinho-claro);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-md);
+  }
+  .plano-card.selecionado {
+    border-color: var(--vinho);
+    background: var(--vinho-bg);
+    box-shadow: 0 0 0 4px var(--vinho-bg);
+  }
+  .plano-titulo {
+    font-weight: 700; color: var(--vinho-escuro);
+    font-size: 15px; margin-bottom: 4px;
+  }
+  .plano-sub {
+    font-size: 12px; color: var(--cinza-500);
+    margin-bottom: 10px;
+  }
+  .plano-preco { color: var(--vinho); font-size: 22px; font-weight: 800; margin: 8px 0 4px; }
+  .plano-teste { color: var(--vinho-claro); font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+  .plano-feats {
+    font-size: 12.5px; color: var(--cinza-700);
+    list-style: none;
+  }
+  .plano-feats li {
+    padding: 3px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .plano-feats li::before {
+    content: "✓"; color: var(--vinho); font-weight: 700;
+  }
+  .plano-badge {
+    position: absolute; top: -10px; right: 10px;
+    background: var(--vinho); color: var(--branco);
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  .modal-politica { display:none; position:fixed; inset:0; z-index:100; align-items:center; justify-content:center; padding:20px; background:rgba(16,5,11,.68); }
+  .modal-politica.aberta { display:flex; }
+  .modal-caixa { width:min(760px,100%); height:min(78vh,680px); display:flex; flex-direction:column; overflow:hidden; border-radius:var(--radius-lg); background:var(--branco); box-shadow:0 20px 70px rgba(54,9,28,.3); }
+  .modal-topo { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; color:var(--branco); background:var(--vinho-escuro); }
+  .modal-topo strong { font-size:16px; }
+  .modal-fechar { border:0; color:var(--branco); background:transparent; font-size:26px; line-height:1; cursor:pointer; }
+  .modal-conteudo { flex:1; border:0; width:100%; }
+
+  /* ============== ALERTAS ============== */
+  .alerta {
+    padding: 14px 16px; border-radius: var(--radius-sm);
+    margin-bottom: 18px; font-size: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .alerta.erro {
+    background: rgba(198,40,40,0.08);
+    color: var(--vermelho);
+    border: 1px solid rgba(198,40,40,0.2);
+  }
+  .alerta.info {
+    background: var(--vinho-bg);
+    color: var(--vinho-escuro);
+    border: 1px solid var(--vinho-bg-2);
+  }
+  .alerta.sucesso {
+    background: rgba(40,167,69,0.08);
+    color: var(--verde);
+    border: 1px solid rgba(40,167,69,0.2);
+  }
+
+  /* ============== BOTOES ============== */
+  .botoes {
+    display: flex; gap: 12px; justify-content: space-between;
+    margin-top: 28px;
+  }
+  .btn {
+    padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 15px; font-weight: 600;
+    border: none; cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-primario {
+    background: linear-gradient(135deg, var(--vinho), var(--vinho-claro));
+    color: var(--branco);
+    box-shadow: 0 4px 14px rgba(114,47,55,0.25);
+  }
+  .btn-primario:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(114,47,55,0.35);
+    text-decoration: none;
+  }
+  .btn-secundario {
+    background: var(--branco);
+    color: var(--cinza-700);
+    border: 1.5px solid var(--cinza-300);
+  }
+  .btn-secundario:hover { background: var(--cinza-50); text-decoration: none; }
+  .btn-secundario-voltar {
+    background: transparent;
+    color: var(--cinza-700);
+    border: 1.5px solid var(--cinza-300);
+  }
+  .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: var(--branco);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ============== RODAPE ============== */
+  .rodape {
+    text-align: center; padding: 24px 0;
+    color: var(--cinza-500); font-size: 13px;
+  }
+
+  /* ============== MOBILE ============== */
+  @media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    .card { padding: 24px 18px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .planos-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 28px; }
+    .step-label { display: none; }
+    .step-divider { max-width: 30px; }
+    .botoes { flex-direction: column-reverse; }
+    .botoes .btn { width: 100%; justify-content: center; }
+  }
+  /* ============== LAYOUT DE REFERÊNCIA ============== */
+  .topo { background: radial-gradient(ellipse at 84% 12%, rgba(193,74,122,.30), transparent 29%), radial-gradient(ellipse at 61% 100%, rgba(58,10,29,.58), transparent 42%), linear-gradient(118deg, #3A0A1D 0%, #720F35 48%, #3A0A1D 100%); border: 0; padding: 22px 0 118px; position: relative; z-index: 1; overflow: hidden; width:100%; max-width:none; }
+  .topo::after { content:none; }
+  .hero-art { position:absolute; inset:0; pointer-events:none; opacity:.9; }
+  .hero-art svg { position:absolute; right:6%; top:28px; width:410px; height:250px; overflow:visible; }
+  .hero-art .orb { fill:url(#orb); opacity:.44; }
+  .hero-art .line { fill:none; stroke:#C14A7A; stroke-opacity:.2; stroke-width:1.2; }
+  .hero-art .dot { fill:#C14A7A; opacity:.32; }
+  .topo-interno { max-width: 1180px; }
+  .logo-img { width: 150px; height: auto; }
+  .topo-link { color: #fff; }
+  .container { max-width: 1180px; margin: -58px auto 0; padding: 0 24px 80px; position: relative; z-index: 3; }
+  .header { text-align: left; max-width: 620px; margin: 0 0 34px; color: #fff; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(193,74,122,.72); border-radius: 999px; color: #fff; padding: 8px 14px; font-size: 12px; font-weight: 600; margin-bottom: 22px; }
+  .hero-badge svg { color: #C14A7A; }
+  .header h1 { color: #fff; font-size: 38px; }
+  .header h1 .grad { background: linear-gradient(135deg,#fff 0 42%,#C14A7A 75%); -webkit-background-clip: text; background-clip: text; }
+  .header p { color: rgba(255,255,255,.86); margin: 0; }
+  .desktop-only { display: block; }
+  .stepper { max-width: 455px; margin: 0 auto 22px; padding: 16px 24px; background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+  .card { max-width: 646px; margin: 0 auto; padding: 32px; box-shadow: 0 8px 28px rgba(30,10,18,.08); border: 0; }
+  .garantias { max-width: 646px; margin: 20px auto 0; }
+  .card-heading { display:flex; align-items:center; gap:16px; margin-bottom:24px; }
+  .card-heading-icon { width:58px; height:58px; flex:0 0 58px; display:grid; place-items:center; color:#720F35; background:#FBF8F9; border-radius:50%; }
+  .card-heading h2 { margin:0 0 3px; }
+  .card-heading .sub { margin:0; }
+  .eyebrow { color:#720F35; font-size:10px; font-weight:800; letter-spacing:.12em; margin-bottom:3px; }
+  .email-ajuda { display:flex; align-items:center; gap:6px; color:var(--cinza-500); font-size:11px; margin-top:7px; }
+  .email-ajuda svg { color:#720F35; flex:0 0 auto; }
+  .seguranca { text-align:center; margin:26px auto 0; color:var(--cinza-700); }
+  .seguranca-icone { width:32px; height:32px; margin:0 auto 7px; display:grid; place-items:center; color:#720F35; background:#FBF8F9; border-radius:50%; }
+  .seguranca strong { display:block; color:var(--preto); font-size:13px; }
+  .seguranca p { margin:3px 0 0; color:var(--cinza-500); font-size:12px; }
+  .rodape { padding:21px 0 25px; }
+  .rodape .seta { color:#720F35; font-weight:700; margin-left:7px; }
+  .prova-social { border-top:1px solid var(--cinza-200); text-align:center; padding:26px 0 0; color:#aaa; font-size:10px; letter-spacing:.14em; }
+  .logos-fake { display:flex; justify-content:center; align-items:center; gap:40px; margin-top:15px; color:#b6b6b6; font-size:17px; letter-spacing:0; filter:grayscale(1); }
+  .logos-fake span { color:#999; }
+  @media (max-width: 640px) {
+    .topo { padding: 16px 0 92px; }
+    .topo-interno { padding: 0 16px; }
+    .hero-art { opacity:.45; }
+    .hero-art svg { width:280px; height:170px; right:-90px; top:45px; }
+    .logo-img { width: 125px; }
+    .container { margin-top: -42px; padding: 0 12px 50px; }
+    .header { margin-bottom: 22px; }
+    .header h1 { font-size: 29px; }
+    .header p { font-size: 14px; }
+    .desktop-only { display: none; }
+    .stepper { padding: 13px 10px; margin-bottom: 14px; }
+    .card { padding: 22px 16px; border-radius: 12px; }
+    .card-heading { gap: 11px; align-items:flex-start; }
+    .card-heading-icon { width:44px; height:44px; flex-basis:44px; }
+    .eyebrow { font-size:9px; }
+    .card-heading h2 { font-size:19px; }
+    .card-heading .sub { font-size:12px; line-height:1.4; }
+    .email-ajuda { font-size:10px; }
+    .logos-fake { gap:14px; font-size:13px; flex-wrap:wrap; }
+  }
+</style>
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a href="/" class="logo" aria-label="Vagas.io — início">
+      <img class="logo-img" src="/assets/logo-vagasio-combr.png" alt="Vagas.io.com.br" />
+    </a>
+    <a href="/" class="topo-link">← Voltar para o site</a>
+  </div>
+  <div class="header">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/></svg>Criação rápida e segura</div>
+    <h1>Crie sua plataforma<br><span class="grad">de recrutamento</span></h1>
+    <p>Em poucos minutos você terá um ambiente exclusivo para<br class="desktop-only"> gerenciar vagas, candidatos e contratações da sua empresa.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 410 250" fill="none">
+      <defs><radialGradient id="orb" cx="35%" cy="30%" r="75%"><stop stop-color="#C14A7A"/><stop offset="1" stop-color="#720F35" stop-opacity="0"/></radialGradient></defs>
+      <path class="orb" d="M306 13c47 13 91 55 91 103s-38 81-83 91c-46 10-87-10-96-47-9-37 15-91 42-121 14-16 29-31 46-26Z"/>
+      <path class="line" d="M223 50c43-30 116-26 157 13 42 39 52 106 13 146-39 40-118 48-167 12-49-36-74-116-3-171Z"/>
+      <path class="line" d="M253 25c38-12 88 7 111 42 23 35 18 84-9 113-27 29-76 39-113 21-37-18-59-65-45-103 9-25 31-49 56-73Z"/>
+      <circle class="dot" cx="283" cy="54" r="3"/><circle class="dot" cx="355" cy="79" r="2"/><circle class="dot" cx="330" cy="190" r="3"/><circle class="dot" cx="232" cy="159" r="2"/><circle class="dot" cx="384" cy="145" r="2"/>
+      <path class="line" d="M38 206c35-23 71-22 105 2s74 25 111 1"/>
+    </svg>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- STEPPER -->
+  <div class="stepper">
+    <div class="step ativo" data-step="1">
+      <div class="step-num">1</div>
+      <span class="step-label">Empresa</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step" data-step="2">
+      <div class="step-num">2</div>
+      <span class="step-label">Plano</span>
+    </div>
+    <div class="step-divider"></div>
+    <div class="step" data-step="3">
+      <div class="step-num">3</div>
+      <span class="step-label">Admin</span>
+    </div>
+  </div>
+
+  <!-- ALERTA GLOBAL -->
+  <div id="alerta" class="alerta erro" style="display:none;">
+    <span id="alerta-texto"></span>
+  </div>
+
+  <!-- CARD PRINCIPAL -->
+  <div class="card">
+
+    <!-- STEP 1: EMPRESA -->
+    <div class="step-painel" data-painel="1">
+      <div class="card-heading"><div class="card-heading-icon"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1M10 21v-4h4v4"/></svg></div><div><div class="eyebrow">DADOS DA EMPRESA</div><h2>Dados da empresa</h2><p class="sub">Essas informações aparecem no painel e nos e-mails da sua equipe.</p></div></div>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label>Nome da empresa <span class="req">*</span></label>
+          <input type="text" id="empresa_nome" placeholder="Ex.: Aroeira G Fitness" maxlength="80" />
+          <span class="field-erro">Informe o nome da empresa</span>
+        </div>
+        <div class="field">
+          <label>CNPJ <span class="req">*</span></label>
+          <input type="text" id="cnpj" placeholder="00.000.000/0000-00" maxlength="18" required />
+          <span class="field-erro">Informe um CNPJ válido com 14 dígitos</span>
+        </div>
+        <div class="field">
+          <label>Telefone <span class="req">*</span></label>
+          <input type="text" id="telefone" placeholder="(11) 99999-9999" maxlength="20" required />
+          <span class="field-erro">Informe um telefone válido</span>
+        </div>
+        <div class="field full">
+          <label>E-mail principal <span class="req">*</span></label>
+          <input type="email" id="email_principal" placeholder="contato@empresa.com.br" />
+          <small class="email-ajuda"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a8 8 0 0 1 8 8v4a2 2 0 0 1-2 2h-1v-6h1v-2a6 6 0 0 0-12 0v2h1v6H6a2 2 0 0 1-2-2v-4a8 8 0 0 1 8-8Z"/><path d="M9 21h6"/></svg>Usaremos este e-mail para enviar informações importantes sobre sua conta.</small>
+        </div>
+      </div>
+
+      <div class="botoes">
+        <a href="/vendas" class="btn btn-secundario-voltar">← Cancelar</a>
+        <button class="btn btn-primario" onclick="irParaStep(2)">
+          Continuar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: PLANO -->
+    <div class="step-painel" data-painel="2" style="display:none;">
+      <h2>Escolha o plano ideal</h2>
+      <p class="sub">Você pode mudar de plano a qualquer momento. Todos os planos têm 30 dias grátis.</p>
+
+      <div class="planos-grid">
+        <div class="plano-card" data-plano="essencial" onclick="selecionarPlano(this)">
+          <div class="plano-titulo">Essencial</div>
+          <div class="plano-sub">Ideal para empresas que estão começando a organizar seu recrutamento.</div>
+          <div class="plano-preco">R$ 149/mês</div>
+          <div class="plano-teste">30 dias grátis</div>
+          <ul class="plano-feats">
+            <li>5 usuários</li><li>Vagas ilimitadas</li><li>Pipeline de candidatos</li><li>Comunicação com candidatos</li><li>Agendamento de entrevistas</li><li>Relatórios básicos</li>
+          </ul>
+        </div>
+        <div class="plano-card selecionado" data-plano="profissional" onclick="selecionarPlano(this)">
+          <div class="plano-badge">Mais escolhido</div>
+          <div class="plano-titulo">Profissional</div>
+          <div class="plano-sub">Para empresas que precisam de mais recursos e controle.</div>
+          <div class="plano-preco">R$ 249/mês</div>
+          <ul class="plano-feats">
+            <li>10 usuários</li><li>Tudo do plano Essencial</li><li>Relatórios avançados</li><li>Documentos e propostas</li><li>Agenda integrada</li><li>Etiquetas e filtros</li><li>Exportação de dados</li>
+          </ul>
+        </div>
+        <div class="plano-card" data-plano="enterprise" onclick="selecionarPlano(this)">
+          <div class="plano-titulo">Enterprise</div>
+          <div class="plano-sub">Para operações maiores e necessidades específicas.</div>
+          <div class="plano-preco">R$ 399/mês</div>
+          <ul class="plano-feats">
+            <li>Usuários ilimitados</li><li>Tudo do plano Profissional</li><li>Configurações personalizadas</li><li>Permissões avançadas</li><li>Integrações sob demanda</li><li>Suporte prioritário</li><li>Onboarding dedicado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="botoes">
+        <button class="btn btn-secundario-voltar" onclick="irParaStep(1)">← Voltar</button>
+        <button class="btn btn-primario" onclick="irParaStep(3)">
+          Continuar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: ADMIN -->
+    <div class="step-painel" data-painel="3" style="display:none;">
+      <h2>Conta do administrador</h2>
+      <p class="sub">Essa pessoa terá acesso total ao painel. Você pode adicionar mais usuários depois.</p>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label>Nome completo <span class="req">*</span></label>
+          <input type="text" id="admin_nome" placeholder="Seu nome" maxlength="80" />
+          <span class="field-erro">Informe seu nome</span>
+        </div>
+        <div class="field">
+          <label>Cargo <span class="opc">(opcional)</span></label>
+          <input type="text" id="admin_cargo" placeholder="Ex: Gerente de RH" maxlength="60" />
+        </div>
+        <div class="field">
+          <label>Telefone <span class="req">*</span></label>
+          <input type="text" id="admin_celular" placeholder="(11) 99999-9999" maxlength="20" required />
+          <span class="field-erro">Informe um telefone válido</span>
+        </div>
+        <div class="field full">
+          <label>E-mail de acesso <span class="req">*</span></label>
+          <input type="email" id="admin_email" placeholder="seu@email.com" autocomplete="email" />
+          <span class="field-erro">Informe um e-mail válido</span>
+        </div>
+        <div class="field">
+          <label>Senha <span class="req">*</span></label>
+          <input type="password" id="admin_senha" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" />
+          <span class="field-erro">A senha deve ter no mínimo 8 caracteres</span>
+        </div>
+        <div class="field">
+          <label>Confirmar senha <span class="req">*</span></label>
+          <input type="password" id="admin_senha_confirma" placeholder="Repita a senha" minlength="8" autocomplete="new-password" />
+          <span class="field-erro">As senhas não conferem</span>
+        </div>
+      </div>
+
+      <div class="alerta info" style="margin-top:20px;">
+        <span>Ao continuar, você concorda com os <a href="#" onclick="abrirPolitica('Termos de Uso','/termos-de-uso.html'); return false;">termos de uso</a> e a <a href="#" onclick="abrirPolitica('Política de Privacidade','/politica-de-privacidade.html'); return false;">política de privacidade</a>.</span>
+      </div>
+
+      <div class="botoes">
+        <button class="btn btn-secundario-voltar" onclick="irParaStep(2)">← Voltar</button>
+        <button class="btn btn-primario" id="btn-finalizar" onclick="finalizar()">
+          <span id="btn-finalizar-texto">Criar minha plataforma</span>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
+  <section class="seguranca" aria-label="Segurança dos dados">
+    <div class="seguranca-icone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+    <strong>Seus dados estão seguros</strong>
+    <p>Todas as informações são protegidas com criptografia de ponta.</p>
+  </section>
+  <p class="rodape">Já tem uma conta? <a href="/empresa/login">Entrar no painel</a><span class="seta">→</span></p>
+  <section class="prova-social"><span>EMPRESAS QUE CONFIAM NO VAGASIO</span><div class="logos-fake"><b>nex<span>a</span></b><b>orbita</b><b>VERDE<span>MAR</span></b><b>atlas</b></div></section>
+</div>
+
+<div class="modal-politica" id="modal-politica" role="dialog" aria-modal="true" aria-labelledby="modal-politica-titulo" onclick="if(event.target===this) fecharPolitica()">
+  <div class="modal-caixa">
+    <div class="modal-topo"><strong id="modal-politica-titulo">Termos de Uso</strong><button class="modal-fechar" type="button" onclick="fecharPolitica()" aria-label="Fechar">×</button></div>
+    <iframe class="modal-conteudo" id="modal-politica-frame" title="Conteúdo da política"></iframe>
+  </div>
+</div>
+
+<script>
+  function abrirPolitica(titulo, url) {
+    document.getElementById('modal-politica-titulo').textContent = titulo;
+    document.getElementById('modal-politica-frame').src = url;
+    document.getElementById('modal-politica').classList.add('aberta');
+    document.body.style.overflow = 'hidden';
+  }
+  function fecharPolitica() {
+    document.getElementById('modal-politica').classList.remove('aberta');
+    document.getElementById('modal-politica-frame').src = '';
+    document.body.style.overflow = '';
+  }
+  // ===== CONFIG =====
+  const API_BASE = 'https://recrutamento-api-novo.onrender.com';
+
+  // ===== STEPPER UI =====
+  let stepAtual = 1;
+  let planoEscolhido = 'profissional';
+
+  function irParaStep(n) {
+    if (n > stepAtual && !validarStep(stepAtual)) return;
+    // Oculta o painel atual
+    document.querySelectorAll('.step-painel').forEach(p => p.style.display = 'none');
+    document.querySelector(`.step-painel[data-painel="${n}"]`).style.display = '';
+    // Atualiza stepper
+    document.querySelectorAll('.step').forEach(s => {
+      const num = parseInt(s.dataset.step);
+      s.classList.remove('ativo', 'feito');
+      if (num < n) s.classList.add('feito');
+      else if (num === n) s.classList.add('ativo');
+    });
+    // Atualiza divisores
+    const divs = document.querySelectorAll('.step-divider');
+    divs.forEach((d, i) => {
+      d.classList.toggle('feito', i < n - 1);
+    });
+    stepAtual = n;
+    hideAlerta();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selecionarPlano(card) {
+    document.querySelectorAll('.plano-card').forEach(c => c.classList.remove('selecionado'));
+    card.classList.add('selecionado');
+    planoEscolhido = card.dataset.plano;
+  }
+
+  // ===== VALIDACOES =====
+  function validarStep(n) {
+    if (n === 1) {
+      const empresa_nome = $('#empresa_nome').value.trim();
+      const cnpj = $('#cnpj').value.trim();
+      let ok = true;
+      if (empresa_nome.length < 2) {
+        marcarErro('empresa_nome'); ok = false;
+      } else desmarcarErro('empresa_nome');
+      const telefone = $('#telefone').value.trim();
+      const email_principal = $('#email_principal').value.trim();
+      if (!cnpj || cnpj.replace(/\D/g, '').length !== 14) {
+        marcarErro('cnpj'); ok = false;
+      } else desmarcarErro('cnpj');
+      if (!telefone || telefone.replace(/\D/g, '').length < 10) {
+        marcarErro('telefone'); ok = false;
+      } else desmarcarErro('telefone');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email_principal)) {
+        marcarErro('email_principal'); ok = false;
+      } else desmarcarErro('email_principal');
+      if (!ok) mostrarAlerta('Preencha os campos obrigatórios corretamente.', 'erro');
+      return ok;
+    }
+    return true;
+  }
+
+  function validarStep3() {
+    const admin_nome = $('#admin_nome').value.trim();
+    const admin_celular = $('#admin_celular').value.trim();
+    const admin_email = $('#admin_email').value.trim();
+    const admin_senha = $('#admin_senha').value;
+    const admin_senha_confirma = $('#admin_senha_confirma').value;
+    let ok = true;
+    if (!admin_nome) { marcarErro('admin_nome'); ok = false; } else desmarcarErro('admin_nome');
+    if (!admin_celular || admin_celular.replace(/\D/g, '').length < 10) {
+      marcarErro('admin_celular'); ok = false;
+    } else desmarcarErro('admin_celular');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(admin_email)) {
+      marcarErro('admin_email'); ok = false;
+    } else desmarcarErro('admin_email');
+    if (admin_senha.length < 8) {
+      marcarErro('admin_senha'); ok = false;
+    } else desmarcarErro('admin_senha');
+    if (admin_senha !== admin_senha_confirma || !admin_senha_confirma) {
+      marcarErro('admin_senha_confirma'); ok = false;
+    } else desmarcarErro('admin_senha_confirma');
+    return ok;
+  }
+
+  // ===== UTILS =====
+  const $ = (sel) => document.querySelector(sel);
+  function marcarErro(id) { $('#' + id).closest('.field').classList.add('invalido'); }
+  function desmarcarErro(id) { $('#' + id).closest('.field').classList.remove('invalido'); }
+  function mostrarAlerta(msg, tipo) {
+    const a = $('#alerta');
+    a.className = 'alerta ' + (tipo || 'erro');
+    $('#alerta-texto').textContent = msg;
+    a.style.display = 'flex';
+  }
+  function hideAlerta() { $('#alerta').style.display = 'none'; }
+
+  // ===== MASCARAS =====
+  $('#cnpj').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '').substring(0, 14);
+    v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+    v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    v = v.replace(/(\d{4})(\d)/, '$1-$2');
+    e.target.value = v;
+  });
+  $('#telefone').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '').substring(0, 11);
+    if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    if (v.length > 10) v = v.replace(/(\d{5})(\d)/, '$1-$2');
+    e.target.value = v;
+  });
+  $('#admin_celular').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '').substring(0, 11);
+    if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    if (v.length > 10) v = v.replace(/(\d{5})(\d)/, '$1-$2');
+    e.target.value = v;
+  });
+
+  // ===== FINALIZAR =====
+  async function finalizar() {
+    if (!validarStep3()) {
+      mostrarAlerta('Preencha todos os campos corretamente.', 'erro');
+      return;
+    }
+    hideAlerta();
+
+    const btn = $('#btn-finalizar');
+    btn.disabled = true;
+    $('#btn-finalizar-texto').innerHTML = '<span class="spinner"></span> Criando plataforma...';
+
+    const payload = {
+      empresa_nome: $('#empresa_nome').value.trim(),
+      cnpj: $('#cnpj').value.trim() || undefined,
+      telefone: $('#telefone').value.trim() || undefined,
+      email_principal: $('#email_principal').value.trim() || undefined,
+      plano: planoEscolhido,
+      admin_nome: $('#admin_nome').value.trim(),
+      admin_email: $('#admin_email').value.trim(),
+      admin_senha: $('#admin_senha').value,
+      admin_cargo: $('#admin_cargo').value.trim() || undefined,
+    };
+
+    try {
+      const r = await fetch(API_BASE + '/api/empresa/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await r.json();
+
+      if (!r.ok) {
+        mostrarAlerta(data.erro || 'Erro ao criar plataforma. Tente novamente.', 'erro');
+        btn.disabled = false;
+        $('#btn-finalizar-texto').textContent = 'Criar minha plataforma';
+        return;
+      }
+
+      // Salva tokens no localStorage (mesmo padrão do empresa/login.html)
+      localStorage.setItem('empresa_token', data.token);
+      localStorage.setItem('empresa_refresh', data.refreshToken);
+      localStorage.setItem('empresa_usuario', JSON.stringify(data.usuario));
+
+      mostrarAlerta('Plataforma criada! Redirecionando...', 'sucesso');
+
+      setTimeout(() => {
+        window.location.href = '/empresa/';
+      }, 1200);
+
+    } catch (e) {
+      console.error(e);
+      mostrarAlerta('Erro de conexão. Verifique sua internet e tente novamente.', 'erro');
+      btn.disabled = false;
+      $('#btn-finalizar-texto').textContent = 'Criar minha plataforma';
+    }
+  }
+</script>
+</body>
+</html>
