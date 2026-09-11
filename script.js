@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-const menu=$('.hamb'), nav=$('.nav'); menu?.addEventListener('click',()=>nav.classList.toggle('open'));
+const menu=$('.hamb'), nav=$('.nav'); menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')});
 $$('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 function countdown(){const target=new Date('2026-11-14T00:00:00-03:00').getTime();const now=Date.now();const days=Math.max(0,Math.ceil((target-now)/86400000));const el=$('#days');if(el)el.textContent=days}countdown();setInterval(countdown,3600000);
 const people={
@@ -9,8 +9,8 @@ const people={
  keylla:{name:'Keylla Almeida',role:'Princesa',img:'assets/keylla.jpg',text:'Representa a juventude e o orgulho de fazer parte dessa história.'},
  denise:{name:'Denise Hora',role:'Amazonas',img:'assets/denise.jpg',text:'Representa a ligação entre a cultura sertaneja, os cavalos e a tradição.'}
 };
-const modal=$('#modal'), content=$('#modalContent'); function openModal(html){content.innerHTML=html;modal.classList.add('open')} function closeModal(){modal.classList.remove('open')}
-$$('[data-person]').forEach(b=>b.addEventListener('click',()=>{const p=people[b.dataset.person];openModal(`<img class="modal-photo" src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><b>${p.role}</b><p>${p.text}</p><button class="btn copper" onclick="document.querySelector('#modal').classList.remove('open')">FECHAR</button>`)}));
+const modal=$('#modal'), content=$('#modalContent'); function openModal(html){content.innerHTML='<h2 id="modalTitle" class="sr-only">Detalhes</h2>'+html;modal.classList.add('open');modal.setAttribute('aria-hidden','false');modal.querySelector('.close')?.focus()} function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')} document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal()});
+$$('[data-person]').forEach(b=>b.addEventListener('click',()=>{const p=people[b.dataset.person];openModal(`<img class="modal-photo" src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><b>${p.role}</b><p>${p.text}</p><button class="btn copper" onclick="closeModal()">FECHAR</button>`)}));
 $('.close')?.addEventListener('click',closeModal);modal?.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 $$('.amounts button').forEach(b=>b.addEventListener('click',()=>{$$('.amounts button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
 $$('.pick-row button').forEach(b=>b.addEventListener('click',()=>{$$('.pick-row button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}));
