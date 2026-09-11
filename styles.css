@@ -24,3 +24,5 @@ html,body{width:100%;min-width:0;max-width:100%;overflow-x:hidden}.topbar,.heade
 @media(max-width:1100px){.hero{height:450px;min-height:450px}.official-logo{width:220px;height:245px;margin-right:20px}.hero h1{font-size:23px}.countdown{width:120px}.quick{padding-inline:5.5vw}}
 @media(max-width:760px){.social{display:none}.hero{height:auto;min-height:690px;padding-top:120px}.official-logo{width:155px;height:170px;top:18px;left:18px}.hero-center{padding-top:205px}.hero h1{font-size:21px}.hero-actions{margin-top:18px}.countdown{top:22px;right:14px;width:112px}.quick{grid-template-columns:repeat(2,1fr);padding:0}.quick a{min-height:76px}.quick a:nth-child(n+5){display:none}}
 @media(max-width:430px){.hero{min-height:675px}.hero-center{padding-top:190px}.hero h1{font-size:19px}.official-logo{width:135px;height:148px}.quick a{min-height:70px}}
+/* Acessibilidade */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.modal[aria-hidden="true"]{visibility:hidden}.modal[aria-hidden="false"]{visibility:visible}
