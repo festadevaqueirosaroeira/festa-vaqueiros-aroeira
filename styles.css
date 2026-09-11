@@ -12,3 +12,7 @@
 @media(max-width:1100px){.official-logo{width:190px;height:215px;margin-right:18px}.brand-logo{width:42px;height:47px}.brand-copy b{font-size:11px}}
 @media(max-width:760px){.brand-logo{width:38px;height:43px}.official-logo{position:absolute;top:16px;left:18px;width:150px;height:165px;margin:0}.hero-center{padding-top:125px}.hero h1{font-size:19px}.footer-logo{width:150px;height:150px}}
 @media(max-width:430px){.official-logo{width:132px;height:146px}.hero-center{padding-top:104px}}
+/* Ajustes finais de responsividade e conteúdo confirmado */
+.btn.disabled{opacity:.68;cursor:not-allowed;pointer-events:none;filter:none}.location .btn.disabled{font-size:10px}.news-card h3{min-height:34px}
+@media(max-width:760px){.hero-center{padding-top:190px}.hero-actions .btn{max-width:100%;font-size:10px}.meta{flex-wrap:wrap}.location .btn.disabled{white-space:normal;text-align:center}}
+@media(max-width:430px){.hero-center{padding-top:175px}.hero h1{line-height:1.08}.meta{gap:10px}.hero-actions{gap:7px}.hero-actions .btn{padding:9px 10px}.news-card h3{min-height:0}}
