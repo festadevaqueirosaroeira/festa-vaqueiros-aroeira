@@ -1,0 +1,18 @@
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const menu=$('.hamb'), nav=$('.nav'); menu?.addEventListener('click',()=>nav.classList.toggle('open'));
+$$('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+function countdown(){const target=new Date('2026-11-14T00:00:00-03:00').getTime();const now=Date.now();const days=Math.max(0,Math.ceil((target-now)/86400000));const el=$('#days');if(el)el.textContent=days}countdown();setInterval(countdown,3600000);
+const people={
+ isabella:{name:'Isabella Gonçalves',role:'Rainha',img:'assets/isabella.jpg',text:'Representa a beleza, a força e o orgulho da tradição da XXIII Festa.'},
+ maite:{name:'Maite Azevedo',role:'Rainha Mirim',img:'assets/maite.jpg',text:'Uma das representantes mirins da nova geração que mantém viva a tradição.'},
+ ana:{name:'Ana Mel',role:'Princesa Mirim',img:'assets/ana.jpg',text:'Representante mirim da XXIII edição, levando simpatia e alegria para a festa.'},
+ keylla:{name:'Keylla Almeida',role:'Princesa',img:'assets/keylla.jpg',text:'Representa a juventude e o orgulho de fazer parte dessa história.'},
+ denise:{name:'Denise Hora',role:'Amazonas',img:'assets/denise.jpg',text:'Representa a ligação entre a cultura sertaneja, os cavalos e a tradição.'}
+};
+const modal=$('#modal'), content=$('#modalContent'); function openModal(html){content.innerHTML=html;modal.classList.add('open')} function closeModal(){modal.classList.remove('open')}
+$$('[data-person]').forEach(b=>b.addEventListener('click',()=>{const p=people[b.dataset.person];openModal(`<img class="modal-photo" src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><b>${p.role}</b><p>${p.text}</p><button class="btn copper" onclick="document.querySelector('#modal').classList.remove('open')">FECHAR</button>`)}));
+$('.close')?.addEventListener('click',closeModal);modal?.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+$$('.amounts button').forEach(b=>b.addEventListener('click',()=>{$$('.amounts button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
+$$('.pick-row button').forEach(b=>b.addEventListener('click',()=>{$$('.pick-row button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}));
+$('#continueVote')?.addEventListener('click',()=>openModal('<h3>VOTO DE APOIO</h3><p>Esta versão do site é um layout visual. A integração de pagamento/Pix deve ser conectada ao sistema oficial antes de receber contribuições reais.</p><button class="btn copper" onclick="document.querySelector(\'#modal\').classList.remove(\'open\')">ENTENDI</button>'));
+$('#reg')?.addEventListener('click',()=>openModal('<h3>REGULAMENTO</h3><p>Área reservada para inserir o regulamento oficial da XXIII Festa de Vaqueiros e Fazendeiros.</p><p>Substitua este conteúdo pelo documento aprovado pela organização antes da publicação definitiva.</p>'));
