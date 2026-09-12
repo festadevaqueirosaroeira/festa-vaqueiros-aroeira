@@ -47,3 +47,30 @@ body{padding-top:100px}.topbar{position:fixed;top:0;left:0;right:0;width:100%;z-
 
 /* Nova capa ilustrada enviada pela organização */
 .hero-scene{background-position:center center;background-size:cover}
+/* Hero mobile mais compacto: mantém a identidade sem ocupar a tela inteira */
+@media(max-width:760px){
+  .hero{min-height:525px;padding:104px 16px 24px}
+  .official-logo{width:138px;height:151px;top:12px;left:14px}
+  .hero-center{padding-top:142px}
+  .hero h1{font-size:15px;line-height:1.13;margin:7px 0 10px}
+  .meta{font-size:10px;gap:10px;line-height:1.15}
+  .hero-actions{margin-top:12px;gap:6px}
+  .hero-actions .btn{padding:8px 9px;font-size:9px;letter-spacing:.7px}
+  .countdown{top:14px;right:12px;width:102px;min-height:118px;padding:16px 6px 8px}
+  .countdown b{font-size:43px;margin-top:7px}
+  .countdown strong{font-size:11px;margin-top:4px}
+  .countdown i{margin-top:4px}
+  .live-clock{margin-top:5px;padding-top:4px}
+  .live-clock small{font-size:7px;padding-bottom:0}
+  .live-clock b{font-size:13px;letter-spacing:1px;margin-top:3px}
+}
+@media(max-width:430px){
+  .hero{min-height:500px;padding-top:96px}
+  .official-logo{width:122px;height:133px;top:11px;left:12px}
+  .hero-center{padding-top:132px}
+  .hero h1{font-size:14px}
+  .countdown{width:94px;min-height:110px;top:13px;right:10px}
+  .countdown b{font-size:39px}
+  .countdown small{font-size:8px}
+  .countdown strong{font-size:10px}
+}
