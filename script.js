@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 const menu=$('.hamb'), nav=$('.nav'); menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')});
 $$('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-function countdown(){const target=new Date('2026-11-14T00:00:00-03:00').getTime();const now=Date.now();const days=Math.max(0,Math.ceil((target-now)/86400000));const el=$('#days');if(el)el.textContent=days}countdown();setInterval(countdown,3600000);
+function countdown(){const target=new Date('2026-11-14T00:00:00-03:00').getTime();const now=Date.now();const days=Math.max(0,Math.ceil((target-now)/86400000));const el=$('#days');if(el)el.textContent=days}countdown();setInterval(countdown,60000);
 const people={
  isabella:{name:'Isabella Gonçalves',role:'Rainha',img:'assets/isabella.jpg',text:'Representa a beleza, a força e o orgulho da tradição da XXIII Festa.'},
  maite:{name:'Maite Azevedo',role:'Rainha Mirim',img:'assets/maite.jpg',text:'Uma das representantes mirins da nova geração que mantém viva a tradição.'},
