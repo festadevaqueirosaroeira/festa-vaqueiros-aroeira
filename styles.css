@@ -41,3 +41,5 @@ html,body{width:100%;min-width:0;max-width:100%;overflow-x:hidden}.topbar,.heade
 .vote-grid{grid-template-columns:1fr}.stats{flex-wrap:wrap;width:100%;max-width:100%;overflow:hidden}.info-card{min-width:0}.info-card p{overflow-wrap:anywhere}.stats div{min-width:0;flex:1 1 30%;padding-inline:8px}.stats b{font-size:26px;overflow-wrap:anywhere;word-break:break-word}.stats small{font-size:9px}
 @media(max-width:760px){.sponsor-track img{width:82vw;height:92px!important}.stats{padding:22px 5px;gap:0}.stats div{padding-inline:5px}.stats b{font-size:21px;line-height:1.05}.stats small{letter-spacing:.8px}.info-card p{font-size:14px;line-height:1.55}}
 @media(max-width:430px){.stats b{font-size:18px}.stats small{font-size:8px}.sponsor-track img{height:88px!important}}
+/* A barra completa permanece fixa durante toda a rolagem */
+body{padding-top:100px}.topbar{position:fixed;top:0;left:0;right:0;width:100%;z-index:80}.header{position:fixed;top:28px;left:0;right:0;width:100%;z-index:79}.nav{z-index:81}@media(max-width:760px){body{padding-top:94px}.topbar{height:28px}.header{top:28px;height:66px}.nav{top:66px}}
