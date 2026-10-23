@@ -14,61 +14,30 @@
   const status = document.getElementById('photoStatus');
   const W = canvas.width, H = canvas.height;
   const photo = new Image();
-  const logo = new Image();
-  logo.src = 'assets/logo-oficial.webp';
+  const frame = new Image();
+  frame.src = 'moldura-da-festa.png?v=1';
+  const HOLE = { x: 70, y: 312, width: 540, height: 491 };
   let ready = false, scale = 1, offsetX = 0, offsetY = 0, pointer = null, photoUrl = '';
 
   function drawCoverImage(target) {
     if (!ready) return;
     const iw = photo.naturalWidth, ih = photo.naturalHeight;
-    const base = Math.max(W / iw, H / ih) * scale;
+    const base = Math.max(HOLE.width / iw, HOLE.height / ih) * scale;
     const dw = iw * base, dh = ih * base;
-    const x = (W - dw) / 2 + offsetX;
-    const y = (H - dh) / 2 + offsetY;
+    const x = HOLE.x + (HOLE.width - dw) / 2 + offsetX;
+    const y = HOLE.y + (HOLE.height - dh) / 2 + offsetY;
+    target.save();
+    target.beginPath();
+    target.rect(HOLE.x, HOLE.y, HOLE.width, HOLE.height);
+    target.clip();
     target.drawImage(photo, x, y, dw, dh);
-  }
-  function drawFrame(target) {
-    const grad = target.createLinearGradient(0, 770, 0, H);
-    grad.addColorStop(0, 'rgba(20,8,3,0)');
-    grad.addColorStop(.25, 'rgba(24,9,3,.62)');
-    grad.addColorStop(.47, 'rgba(24,9,3,.94)');
-    grad.addColorStop(1, '#170803');
-    target.fillStyle = grad;
-    target.fillRect(0, 720, W, H - 720);
-
-    // Acabamento de cobre e corda na borda da arte.
-    target.strokeStyle = '#e3b46f'; target.lineWidth = 5;
-    target.strokeRect(24, 24, W - 48, H - 48);
-    target.strokeStyle = 'rgba(255,225,178,.78)'; target.lineWidth = 2;
-    target.strokeRect(36, 36, W - 72, H - 72);
-    target.fillStyle = '#f2c982';
-    for (const x of [58, W - 58]) for (const y of [58, H - 58]) {
-      target.beginPath(); target.arc(x, y, 7, 0, Math.PI * 2); target.fill();
-    }
-
-    if (logo.complete && logo.naturalWidth) {
-      const maxW = 315, maxH = 188;
-      const ratio = Math.min(maxW / logo.naturalWidth, maxH / logo.naturalHeight);
-      const lw = logo.naturalWidth * ratio, lh = logo.naturalHeight * ratio;
-      target.save(); target.globalAlpha = .98;
-      target.drawImage(logo, (W-lw)/2, 860, lw, lh);
-      target.restore();
-    }
-    target.textAlign = 'center'; target.textBaseline = 'middle';
-    target.fillStyle = '#f1c47d'; target.font = '700 26px Arial, sans-serif';
-    target.letterSpacing = '7px'; target.fillText('EU VOU PRA', W/2, 1084);
-    target.fillStyle = '#fff1d7'; target.font = '900 69px Georgia, serif';
-    target.letterSpacing = '1px'; target.fillText('FESTA!', W/2, 1160);
-    target.fillStyle = '#e8c58e'; target.font = '700 24px Arial, sans-serif';
-    target.letterSpacing = '3px'; target.fillText('14 DE NOVEMBRO · 2026', W/2, 1230);
-    target.fillStyle = '#dec8a9'; target.font = '600 18px Arial, sans-serif';
-    target.letterSpacing = '1px'; target.fillText('POVOADO DE AROEIRA · PÉ DE SERRA — BA', W/2, 1276);
+    target.restore();
   }
   function render() {
     if (!ready) return;
     ctx.clearRect(0, 0, W, H);
     drawCoverImage(ctx);
-    drawFrame(ctx);
+    if (frame.complete && frame.naturalWidth) ctx.drawImage(frame, 0, 0, W, H);
     shell.classList.add('has-photo');
   }
   function selectImage(file) {
@@ -155,6 +124,6 @@
       status.textContent = 'Não foi possível compartilhar. Use “Baixar minha foto” e anexe no Instagram.';
     }
   });
-  logo.onload = () => { if (ready) render(); };
-  logo.onerror = () => { if (ready) render(); };
+  frame.onload = () => { if (ready) render(); };
+  frame.onerror = () => { status.textContent = 'Não foi possível carregar a moldura. Atualize a página e tente novamente.'; };
 })();
