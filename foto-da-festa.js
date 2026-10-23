@@ -37,7 +37,7 @@
     if (!ready) return;
     ctx.clearRect(0, 0, W, H);
     drawCoverImage(ctx);
-    if (frame.complete && frame.naturalWidth) ctx.drawImage(frame, 0, 0, W, H);
+    if (frame.complete && frame.naturalWidth) ctx.drawImage(frame, 0, 0);
     shell.classList.add('has-photo');
   }
   function selectImage(file) {
@@ -89,7 +89,7 @@
   canvas.addEventListener('pointercancel', endDrag);
 
   function makeBlob() {
-    return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Não foi possível preparar a imagem.')), 'image/jpeg', .94));
+    return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Não foi possível preparar a imagem.')), 'image/png'));
   }
   downloadButton.addEventListener('click', async () => {
     if (!ready) return;
@@ -98,7 +98,7 @@
       const blob = await makeBlob();
       const link = document.createElement('a');
       const url = URL.createObjectURL(blob);
-      link.href = url; link.download = 'eu-vou-pra-festa-aroeira.jpg';
+      link.href = url; link.download = 'eu-vou-pra-festa-aroeira.png';
       document.body.appendChild(link); link.click(); link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1500);
       status.textContent = 'Foto baixada! Agora você pode publicar nos Stories.';
@@ -108,7 +108,7 @@
     if (!ready) return;
     try {
       const blob = await makeBlob();
-      const file = new File([blob], 'eu-vou-pra-festa-aroeira.jpg', { type: 'image/jpeg' });
+      const file = new File([blob], 'eu-vou-pra-festa-aroeira.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
         await navigator.share({ files: [file], title: 'Eu vou pra Festa de Aroeira!', text: 'Eu vou pra XXIII Festa de Vaqueiros e Fazendeiros. E você?' });
         status.textContent = 'Montagem compartilhada.';
