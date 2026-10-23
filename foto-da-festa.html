@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#241008">
+<meta name="description" content="Monte sua foto para a XXIII Festa de Vaqueiros e Fazendeiros do Povoado de Aroeira. Escolha uma foto, faça a montagem e compartilhe.">
+<title>Monte sua foto | XXIII Festa de Vaqueiros e Fazendeiros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Rye&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="foto-da-festa.css?v=1">
+</head>
+<body class="photo-tool-page">
+<div class="topbar"><span>14 DE NOVEMBRO DE 2026</span><span>POVOADO DE AROEIRA · PÉ DE SERRA — BA</span><span>ENTRE CHAPÉUS, CAVALOS E EMOÇÃO</span></div>
+<header class="header">
+  <a class="brand" href="index.html#inicio" aria-label="Voltar ao site da Festa">
+    <img class="brand-logo" src="assets/logo-oficial.webp" alt="XXIII Festa de Vaqueiros e Fazendeiros do Povoado de Aroeira"><span class="brand-copy"><b>FESTA DE<br>VAQUEIROS <i>&</i> FAZENDEIROS</b><small>DO POVOADO DE AROEIRA</small></span>
+  </a>
+  <a class="photo-home-link" href="index.html">VOLTAR AO SITE</a>
+</header>
+<main class="photo-main">
+  <section class="photo-intro">
+    <span class="photo-eyebrow">UMA FESTA, MUITAS HISTÓRIAS</span>
+    <h1>EU VOU PRA <em>FESTA!</em></h1>
+    <p>Coloque sua foto na moldura oficial da XXIII Festa de Vaqueiros e Fazendeiros e compartilhe com todo mundo.</p>
+  </section>
+  <section class="photo-maker" aria-label="Montagem da foto da festa">
+    <div class="photo-controls">
+      <h2>MONTE SUA FOTO</h2>
+      <p class="photo-instructions">Tire uma foto agora ou escolha uma da galeria. Depois ajuste o enquadramento e baixe sua montagem.</p>
+      <div class="photo-input-actions">
+        <label class="photo-pick-button photo-camera" for="cameraInput"><span aria-hidden="true">📷</span> TIRAR FOTO</label>
+        <label class="photo-pick-button" for="galleryInput"><span aria-hidden="true">▧</span> ESCOLHER DA GALERIA</label>
+      </div>
+      <input id="cameraInput" class="visually-hidden" type="file" accept="image/*" capture="user">
+      <input id="galleryInput" class="visually-hidden" type="file" accept="image/*">
+      <div class="photo-adjust" id="adjustControls" hidden>
+        <label for="zoomControl">AJUSTAR ZOOM <span id="zoomValue">100%</span></label>
+        <input id="zoomControl" type="range" min="100" max="250" value="100" step="1">
+        <p>Arraste a foto para reposicionar. Use o controle para aproximar ou afastar.</p>
+      </div>
+      <div class="photo-result-actions">
+        <button id="downloadPhoto" class="photo-submit" type="button" disabled>BAIXAR MINHA FOTO <span>↓</span></button>
+        <button id="sharePhoto" class="photo-share" type="button" disabled>COMPARTILHAR <span>↗</span></button>
+      </div>
+      <p id="photoStatus" class="photo-status" role="status" aria-live="polite">Escolha uma foto para começar.</p>
+      <div class="photo-privacy"><span aria-hidden="true">🔒</span><p><strong>Sua foto fica no seu aparelho.</strong> A montagem acontece aqui no navegador. Não enviamos nem guardamos sua imagem.</p></div>
+    </div>
+    <div class="photo-preview-wrap">
+      <span class="preview-label">PRÉVIA DA MONTAGEM</span>
+      <div class="photo-canvas-shell">
+        <canvas id="photoCanvas" width="1080" height="1350" aria-label="Prévia da montagem da sua foto"></canvas>
+        <div class="canvas-empty" id="canvasEmpty"><span>✦</span><b>SUA FOTO<br>VAI APARECER AQUI</b><small>ESCOLHA UMA FOTO PARA COMEÇAR</small></div>
+      </div>
+      <small class="preview-hint">Formato vertical, ideal para compartilhar nos Stories.</small>
+    </div>
+  </section>
+  <p class="photo-back"><a href="index.html">← VOLTAR PARA O SITE DA FESTA</a></p>
+</main>
+<footer class="photo-footer">XXIII FESTA DE VAQUEIROS E FAZENDEIROS · 14 DE NOVEMBRO DE 2026 · POVOADO DE AROEIRA, PÉ DE SERRA — BA</footer>
+<script src="foto-da-festa.js?v=1" defer></script>
+</body>
+</html>

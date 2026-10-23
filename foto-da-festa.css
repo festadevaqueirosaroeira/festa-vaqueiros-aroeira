@@ -1,0 +1,27 @@
+:root{--photo-ink:#241008;--photo-copper:#b66b32;--photo-gold:#dfb16f;--photo-cream:#f5e8d5;--photo-paper:#e9d5b9}
+.photo-tool-page{min-height:100vh;background:radial-gradient(ellipse at 50% 0,#4b2612 0,#241008 45%,#160804 100%);color:#f8ead6}
+.photo-tool-page .header{position:sticky;top:0;z-index:40}
+.photo-home-link{color:#f7e5cb;text-decoration:none;border:1px solid #b87940;padding:10px 15px;font:800 12px 'Barlow Condensed',sans-serif;letter-spacing:1px}
+.photo-main{width:min(1120px,100%);margin:auto;padding:48px 24px 52px}
+.photo-intro{text-align:center;max-width:720px;margin:0 auto 30px}
+.photo-eyebrow{font:700 12px 'Barlow Condensed',sans-serif;letter-spacing:3px;color:#d49a5b}
+.photo-intro h1{font:800 clamp(40px,7vw,68px)/.95 'Barlow Condensed',sans-serif;letter-spacing:1px;margin:12px 0;color:#fff0d9}
+.photo-intro h1 em{font-family:Rye,serif;color:#e3a75d;font-style:normal}
+.photo-intro p{font:16px/1.6 'DM Sans',sans-serif;color:#e0cbb0;margin:0 auto;max-width:610px}
+.photo-maker{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,.8fr);gap:40px;align-items:center;background:rgba(248,231,207,.06);border:1px solid rgba(216,160,99,.38);box-shadow:0 20px 60px #09030170;padding:32px}
+.photo-controls h2{font:800 27px 'Barlow Condensed',sans-serif;letter-spacing:1.5px;margin:0 0 8px;color:#f6e3c6}
+.photo-instructions{font:14px/1.55 'DM Sans',sans-serif;color:#d7c1a5;margin:0 0 22px;max-width:480px}
+.photo-input-actions{display:grid;gap:11px}
+.photo-pick-button,.photo-submit,.photo-share{min-height:50px;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border:1px solid #c8874a;background:linear-gradient(135deg,#8b4d24,#bd753a);color:#fff3df;font:800 14px 'Barlow Condensed',sans-serif;letter-spacing:1px;cursor:pointer;text-align:center;transition:filter .2s,transform .2s}
+.photo-pick-button:hover,.photo-submit:not(:disabled):hover,.photo-share:not(:disabled):hover{filter:brightness(1.14);transform:translateY(-1px)}
+.photo-pick-button span{font-size:20px}.photo-camera{background:linear-gradient(135deg,#c18342,#e0ad62);color:#271206}
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.visually-hidden:focus-visible + label{outline:3px solid #f4d29a}
+.photo-adjust{margin-top:23px}.photo-adjust label{display:flex;justify-content:space-between;font:800 12px 'Barlow Condensed',sans-serif;letter-spacing:1px;color:#f2d7b1}.photo-adjust input{width:100%;margin:13px 0;accent-color:#d18a48}.photo-adjust p{font:12px/1.5 'DM Sans',sans-serif;color:#c9b197;margin:0}
+.photo-result-actions{display:grid;gap:10px;margin-top:24px}.photo-submit:disabled,.photo-share:disabled{opacity:.48;cursor:not-allowed;filter:grayscale(.45)}.photo-share{background:transparent;border-color:#9e754b;color:#f2d7b1}
+.photo-status{min-height:20px;font:12px/1.5 'DM Sans',sans-serif;color:#e8c68f;margin:12px 0 0}
+.photo-privacy{display:flex;gap:10px;align-items:flex-start;margin-top:23px;padding:13px;border:1px solid rgba(220,179,125,.28);background:#08030138;color:#d7c5ad}.photo-privacy span{font-size:17px}.photo-privacy p{font:11px/1.5 'DM Sans',sans-serif;margin:0}.photo-privacy strong{color:#f3d39f}
+.photo-preview-wrap{display:flex;flex-direction:column;align-items:center}.preview-label{font:800 12px 'Barlow Condensed',sans-serif;letter-spacing:2px;color:#d7a366;margin-bottom:12px}.photo-canvas-shell{position:relative;width:min(100%,360px);aspect-ratio:4/5;background:#0b0502;border:5px solid #bc8247;box-shadow:0 0 0 1px #f1cf9a,0 18px 35px #090302;overflow:hidden;touch-action:none}.photo-canvas-shell canvas{display:block;width:100%;height:100%;object-fit:contain;opacity:0}.photo-canvas-shell.has-photo canvas{opacity:1;cursor:grab}.photo-canvas-shell.has-photo canvas:active{cursor:grabbing}.canvas-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;color:#c19460;background:radial-gradient(ellipse at center,#462713,#160a04)}.canvas-empty span{font-size:34px;color:#e6b772}.canvas-empty b{font:800 25px/1 'Barlow Condensed',sans-serif;letter-spacing:1px}.canvas-empty small{font:700 9px 'Barlow Condensed',sans-serif;letter-spacing:1.5px;color:#a98763}.photo-canvas-shell.has-photo .canvas-empty{display:none}.preview-hint{font:11px 'DM Sans',sans-serif;color:#bda88e;margin-top:14px}.photo-back{text-align:center;margin:26px 0 0}.photo-back a{font:800 12px 'Barlow Condensed',sans-serif;letter-spacing:1px;color:#e1ae6c;text-decoration:none}.photo-footer{text-align:center;padding:18px 14px;border-top:1px solid #8a542c;color:#b79d7e;font:700 10px 'Barlow Condensed',sans-serif;letter-spacing:1px}
+@media(max-width:760px){.photo-main{padding:35px 16px 40px}.photo-maker{grid-template-columns:1fr;gap:28px;padding:22px 17px}.photo-preview-wrap{grid-row:1}.photo-canvas-shell{width:min(76vw,340px)}.photo-controls h2{font-size:24px}.photo-intro p{font-size:14px}.photo-home-link{font-size:10px;padding:9px 10px}.photo-tool-page .header{padding-inline:13px}}
+@media(max-width:430px){.photo-main{padding:28px 12px 34px}.photo-maker{padding:17px 13px;gap:22px}.photo-canvas-shell{width:min(82vw,330px)}.photo-input-actions{gap:9px}.photo-pick-button{min-height:48px;font-size:13px}.photo-footer{font-size:9px;line-height:1.5}}
+@media(prefers-reduced-motion:reduce){.photo-pick-button,.photo-submit,.photo-share{transition:none}}
