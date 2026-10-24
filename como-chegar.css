@@ -14,3 +14,11 @@
 .arrival-hero-banner{display:block;width:100%;height:auto;min-height:0;max-height:none;overflow:hidden;background:#f4e8d2}
 .arrival-banner-image{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
 @media(max-width:760px){.arrival-hero-banner{height:auto}.arrival-banner-image{width:100%;height:auto;object-fit:contain}}
+
+/* Nome da festa compacto em uma única linha no cabeçalho do guia. */
+.arrival-header .brand{min-width:0;flex:1;gap:8px;white-space:nowrap}
+.arrival-header .brand-logo{flex:none}
+.arrival-header .brand-copy{min-width:0;white-space:nowrap}
+.arrival-header .brand-copy b{display:block;white-space:nowrap;font-size:clamp(9px,1.18vw,13px);letter-spacing:.15px;line-height:1}
+.arrival-header .brand-copy small{white-space:nowrap;font-size:9px;letter-spacing:1px}
+@media(max-width:760px){.arrival-header .brand{gap:7px}.arrival-header .brand-logo{width:36px;height:36px}.arrival-header .brand-copy b{font-size:clamp(8px,2.25vw,10px);letter-spacing:0}.arrival-header .brand-copy small{font-size:7px;letter-spacing:.65px}}
