@@ -13,3 +13,30 @@
 .arrival-hero-banner{display:block;width:100%;height:auto;min-height:0;max-height:none;overflow:hidden;background:#f4e8d2}
 .arrival-banner-image{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
 @media(max-width:760px){.arrival-hero-banner{height:auto}.arrival-banner-image{width:100%;height:auto;object-fit:contain}}
+
+/* Harmonização visual: cartões mais leves, hierarquia clara e ações equilibradas. */
+.arrival-content{width:min(1080px,100%);padding:30px 24px 46px}
+.arrival-warning{border-radius:10px;border-left-width:5px;padding:17px 20px;box-shadow:0 8px 24px #09030133}
+.arrival-grid{grid-template-columns:1fr;gap:16px;margin-top:18px;align-items:stretch}
+.arrival-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-content:start;padding:25px 28px;border-radius:12px;border-color:#79502f;background:linear-gradient(135deg,#2b1409 0%,#211006 56%,#1b0c06 100%);box-shadow:0 10px 28px #09030142,inset 0 1px #f4d5a30c}
+.arrival-step,.arrival-card h2{grid-column:1/-1}
+.arrival-card h2{font-family:'Barlow Condensed',sans-serif;letter-spacing:.35px;font-size:clamp(27px,3vw,34px);line-height:1.04;margin:8px 0 17px}
+.arrival-card h2 em{font-family:'Barlow Condensed',sans-serif;font-size:1em;letter-spacing:.2px;color:#e4b26f}
+.arrival-map-card .arrival-address{grid-column:1;align-self:center;margin:0;padding:5px 0;color:#ecd9bd;font-size:15px;line-height:1.75}
+.navigation-options{grid-column:2;grid-row:3;display:grid;grid-template-columns:1fr 1fr;align-self:center;gap:12px;margin:0}
+.navigation-options .arrival-primary{min-height:64px;justify-content:flex-start;gap:10px;padding:12px 14px;border-radius:9px;font-size:12px;letter-spacing:.55px;line-height:1.15}
+.navigation-options .nav-brand-image{width:34px;height:34px;flex:0 0 34px;object-fit:contain;background:#fff;border:1px solid #eadfcd;border-radius:8px;padding:4px}
+.navigation-options .nav-google,.navigation-options .nav-waze{background:#f6ebd9;color:#321a0d;border:1px solid #d3b995;box-shadow:0 3px 10px #08030135,inset 0 1px #fff9}
+.navigation-options .nav-google:hover,.navigation-options .nav-waze:hover{background:#fff5e6;border-color:#e3b66f;transform:translateY(-2px)}
+.navigation-options .navigation-arrow{margin-left:auto!important;font-size:18px;color:#865027}
+.arrival-contact-card>p{grid-column:1;grid-row:3;align-self:center;margin:0;color:#e2cdb0;font-size:15px;line-height:1.65}
+.arrival-contact{grid-column:2;grid-row:3;align-self:center;display:flex;align-items:center;gap:13px;border:1px solid #3d815c;border-radius:10px;padding:14px 17px;color:#f2f4e9;text-decoration:none;background:linear-gradient(110deg,#174b36,#1f6245);box-shadow:0 4px 12px #09030140;transition:transform .18s,filter .18s}
+.arrival-contact:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.contact-icon{font-size:24px;color:#d5e7be}.arrival-contact b{font-size:13px}.arrival-contact small{font-size:14px;color:#f0e8d6}
+.contact-arrow{margin-left:auto;color:#e4c78e}.arrival-email{grid-column:2;grid-row:4;justify-self:start;margin:10px 0 0 4px;color:#edc17e;font-size:13px}
+.arrival-checklist{grid-column:1/-1;grid-row:5;margin-top:20px;padding-top:16px;border-top:1px solid #704726}
+.arrival-checklist h3{font-size:15px;letter-spacing:1.4px;margin-bottom:11px}
+.arrival-checklist ul{display:grid;grid-template-columns:1fr 1fr;column-gap:30px;row-gap:5px;font-size:13px;line-height:1.55}
+.arrival-footer{padding:21px 16px;background:#160803;border-top-color:#694323;color:#cbb18d;font-size:11px;letter-spacing:1.2px}
+@media(max-width:760px){.arrival-content{padding:20px 14px 32px}.arrival-warning{padding:14px 15px;border-radius:9px}.arrival-warning p{font-size:13px;line-height:1.55}.arrival-grid{gap:13px;margin-top:14px}.arrival-card{grid-template-columns:1fr;gap:0;padding:20px;border-radius:11px}.arrival-step,.arrival-card h2,.arrival-map-card .arrival-address,.navigation-options,.arrival-contact-card>p,.arrival-contact,.arrival-email,.arrival-checklist{grid-column:1;grid-row:auto}.arrival-card h2{font-size:28px;margin:8px 0 13px}.arrival-map-card .arrival-address{padding:0 0 12px;font-size:14px;line-height:1.65}.navigation-options{grid-template-columns:1fr 1fr;gap:9px}.navigation-options .arrival-primary{min-height:58px;padding:10px;font-size:11px;gap:8px}.navigation-options .nav-brand-image{width:30px;height:30px;flex-basis:30px}.arrival-contact-card>p{margin:0 0 14px;font-size:14px}.arrival-contact{padding:13px 14px}.arrival-email{margin:11px 0 0 2px}.arrival-checklist{margin-top:16px;padding-top:14px}.arrival-checklist ul{grid-template-columns:1fr;row-gap:3px;font-size:12px}.arrival-footer{font-size:9px;line-height:1.5;letter-spacing:.8px}}
+@media(max-width:390px){.arrival-card{padding:17px}.navigation-options{grid-template-columns:1fr}.navigation-options .arrival-primary{min-height:54px}.arrival-card h2{font-size:26px}}
