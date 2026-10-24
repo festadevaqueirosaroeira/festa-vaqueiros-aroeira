@@ -1,5 +1,5 @@
-const CACHE='aroeira-offline-test-v3';
-const ASSETS=['./','./index.html','./style.css?v=2','./app.js?v=2','./map-data.json','./manifest.webmanifest','./icon.svg'];
+const CACHE='aroeira-offline-test-v4';
+const ASSETS=['./','./index.html','./style.css?v=3','./app.js?v=3','./map-data.json','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);for(const asset of ASSETS){try{const response=await fetch(asset,{cache:'reload'});if(response.ok)await cache.put(asset,response);}catch(e){}}await self.skipWaiting();})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('aroeira-offline-test-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();})()));
 self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET'||new URL(request.url).origin!==location.origin)return;event.respondWith((async()=>{const cache=await caches.open(CACHE);const cached=await cache.match(request,{ignoreSearch:true});if(cached)return cached;try{const response=await fetch(request);if(response.ok)cache.put(request,response.clone());return response;}catch(e){return cached||new Response('Conteúdo não disponível sem conexão neste teste.',{status:503,headers:{'Content-Type':'text/plain; charset=utf-8'}});}})());});
