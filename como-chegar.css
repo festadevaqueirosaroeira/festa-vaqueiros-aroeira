@@ -3,3 +3,9 @@
 @media(max-width:430px){.arrival-hero{height:330px}.arrival-hero-content{padding:27px 15px}.arrival-hero h1{font-size:47px}.arrival-date{font-size:10px}.arrival-card{padding:17px}.arrival-warning{padding:13px}.arrival-content{padding-inline:11px}}
 
 .navigation-options{display:grid;gap:10px;margin-top:13px}.navigation-options .arrival-primary{justify-content:flex-start;gap:12px;min-height:52px}.navigation-options .nav-brand{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:#fff;color:#2463b6;font:900 17px Arial,sans-serif}.navigation-options .nav-waze .nav-brand{background:#4cc5e8;color:#153743}.navigation-options .nav-google{background:linear-gradient(120deg,#24569a,#3478ca)}.navigation-options .nav-waze{background:linear-gradient(120deg,#08798d,#13a6b3)}.navigation-options .arrival-primary span:last-child{margin-left:auto}
+
+/* Barra superior fixa no viewport, sem lacuna acima do conteúdo. */
+.arrival-page{padding-top:100px}
+.arrival-page .topbar{position:fixed!important;top:0;left:0;right:0;height:28px;width:100%;z-index:90}
+.arrival-page .header{position:fixed!important;top:28px;left:0;right:0;height:72px;width:100%;z-index:89}
+@media(max-width:760px){.arrival-page{padding-top:94px}.arrival-page .topbar{height:28px}.arrival-page .header{top:28px;height:66px}}
